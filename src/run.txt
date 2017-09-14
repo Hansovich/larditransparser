@@ -1,2 +1,4 @@
-java -cp "/root/ltp/lib/*:." com.yh.lt.Main
+java -cp "/root/larditrans/lib/*:." com.yh.lt.Main
 jps -lV
+scp -r lorditransparser/lib root@vps129016.vps.ovh.ca:/root/larditrans/lib
+scp -r lorditransparser/out/production/lorditransparser root@vps129016.vps.ovh.ca:/root/larditrans/
