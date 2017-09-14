@@ -70,7 +70,7 @@ public class Main {
 
                 String message = "";
                 for (Offer o : newOffers){
-                    message += o.getRowHtml() + "\r\r";
+                    message += "<a href=\"https://lardi-trans.com/gruz/view/"+o.getId()+"\">" + o.getRowHtml() + "</a><br/><br/>";
                 }
 
                 sendEmail(TO_EMAIL, message, "Новые предложения lardi-trans");
@@ -135,9 +135,9 @@ public class Main {
 
 
 
-    public static void sendEmail(String to, String messageText, String subj) throws MessagingException {
+    public static void sendEmail(String to, String html, String subj) throws MessagingException {
 
-        if (messageText == null || messageText.trim().isEmpty()){
+        if (html == null || html.trim().isEmpty()){
             return;
         }
 
@@ -172,13 +172,11 @@ public class Main {
 
             // Set Subject: header field
             message.setSubject(subj);
-
-            // Now set the actual message
-            message.setText(messageText);
+            message.setContent(html, "text/html; charset=utf-8");
 
             // Send message
             Transport.send(message);
-            logger.debug("Sent message successfully: " + messageText);
+            logger.debug("Sent message successfully: " + html);
     }
 
     static class GMailAuthenticator extends Authenticator {
