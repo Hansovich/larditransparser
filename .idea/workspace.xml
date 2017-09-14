@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb752d07-2cab-4d6f-a5e2-554626ad7863" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/run.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/yh/lt/Main.java" afterPath="$PROJECT_DIR$/src/com/yh/lt/Main.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="log4j-application.log" />
@@ -28,15 +28,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/yh/lt/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="131" column="32" lean-forward="false" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
+            <state relative-caret-position="285">
+              <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6523#6524#0" expanded="true" />
-                <element signature="e#6590#6591#0" expanded="true" />
+                <element signature="e#6527#6528#0" expanded="true" />
+                <element signature="e#6594#6595#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/run.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -103,9 +103,9 @@
         <option value="$PROJECT_DIR$/src/com/yh/lt/MySQLAccess.java" />
         <option value="$PROJECT_DIR$/src/setup.sql" />
         <option value="$PROJECT_DIR$/out/production/lorditransparser/run.txt" />
-        <option value="$PROJECT_DIR$/src/com/yh/lt/Main.java" />
         <option value="$PROJECT_DIR$/src/log4j.properties" />
         <option value="$PROJECT_DIR$/src/run.txt" />
+        <option value="$PROJECT_DIR$/src/com/yh/lt/Main.java" />
       </list>
     </option>
   </component>
@@ -636,7 +636,7 @@
       <updated>1505145460885</updated>
       <workItem from="1505145467815" duration="9125000" />
       <workItem from="1505300360454" duration="36000" />
-      <workItem from="1505381417474" duration="6805000" />
+      <workItem from="1505381417474" duration="6819000" />
     </task>
     <task id="LOCAL-00001" summary="2">
       <created>1505156218037</created>
@@ -680,11 +680,18 @@
       <option name="project" value="LOCAL" />
       <updated>1505389074668</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="3">
+      <created>1505389416339</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1505389416339</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15966000" />
+    <option name="totallyTimeSpent" value="15980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -780,8 +787,8 @@
           <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6523#6524#0" expanded="true" />
-            <element signature="e#6590#6591#0" expanded="true" />
+            <element signature="e#6527#6528#0" expanded="true" />
+            <element signature="e#6594#6595#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -855,8 +862,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6523#6524#0" expanded="true" />
-            <element signature="e#6590#6591#0" expanded="true" />
+            <element signature="e#6527#6528#0" expanded="true" />
+            <element signature="e#6594#6595#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -974,18 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/yh/lt/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="131" column="32" lean-forward="false" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6523#6524#0" expanded="true" />
-            <element signature="e#6590#6591#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1007,6 +1002,18 @@
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/yh/lt/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6527#6528#0" expanded="true" />
+            <element signature="e#6594#6595#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

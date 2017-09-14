@@ -19,8 +19,8 @@ import java.util.Properties;
 
 public class Main {
     private final static String URL_TEMPLATE="https://lardi-trans.com/gruz/?countryfrom={0}&countryto={1}&mass2={2}&startSearch=%D0%A1%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C+%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BA%D1%83";
-    private final static long SLEEP_PARSER = 10 * 60 * 10;
-    private final static long SLEEP_SENDER = 5 * 60 * 10;
+    private final static long SLEEP_PARSER = 10 * 60 * 1000;
+    private final static long SLEEP_SENDER = 5 * 60 * 1000;
     private final static long SUPPORT_DELAY = 30 * 60 * 1000;
     private final static String TO_EMAIL = "yhankovich@gmail.com";
     private final static String SUPPORT_EMAIL = "yhankovich@gmail.com";
