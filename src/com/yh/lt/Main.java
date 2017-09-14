@@ -19,12 +19,14 @@ import java.util.Properties;
 
 public class Main {
     private final static String URL_TEMPLATE="https://lardi-trans.com/gruz/?countryfrom={0}&countryto={1}&mass2={2}&startSearch=%D0%A1%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C+%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BA%D1%83";
-    private final static long SLEEP_PARSER = 10 * 60 * 1000 / 1000;
-    private final static long SLEEP_SENDER = 5 * 60 * 1000 / 1000;
+    private final static long SLEEP_PARSER = 10 * 60 * 1000;
+    private final static long SLEEP_SENDER = 5 * 60 * 1000;
+    private final static long SUPPORT_DELAY = 30 * 60 * 1000;
     private final static String TO_EMAIL = "yhankovich@gmail.com";
     private final static String SUPPORT_EMAIL = "yhankovich@gmail.com";
     private final static String GMAIL_ACCOUNT = "larditransparser";
     private final static String GMAIL_PASSWORD = "babagala";
+    private static long LAST_TIME_SUPPORT_CONTACTED = 0;
 
 
     final static Logger logger = Logger.getLogger(Main.class);
@@ -71,7 +73,7 @@ public class Main {
                     message += o.getRowHtml() + "\r\r";
                 }
 
-                sendEmail(TO_EMAIL, message);
+                sendEmail(TO_EMAIL, message, "Новые предложения lardi-trans");
 
                 mysql.markOffersSent(newOffers);
 
@@ -84,13 +86,15 @@ public class Main {
     }
 
     private static void contactSupport(String s) {
-        // todo
-    }
+        try {
 
-    public static void parse() throws Exception {
-
-            parse(MessageFormat.format(URL_TEMPLATE, "BY", "LT", 2));
-            parse(MessageFormat.format(URL_TEMPLATE, "LT", "BY", 2));
+            if (System.currentTimeMillis() - SUPPORT_DELAY > LAST_TIME_SUPPORT_CONTACTED){
+                sendEmail(SUPPORT_EMAIL, s, "lorditrans message");
+                LAST_TIME_SUPPORT_CONTACTED = System.currentTimeMillis();
+            }
+        } catch (MessagingException e) {
+            logger.error(e);
+        }
     }
 
 
@@ -131,7 +135,7 @@ public class Main {
 
 
 
-    public static void sendEmail(String to, String messageText) throws MessagingException {
+    public static void sendEmail(String to, String messageText, String subj) throws MessagingException {
 
         if (messageText == null || messageText.trim().isEmpty()){
             return;
@@ -150,7 +154,7 @@ public class Main {
         properties.setProperty("mail.host", "smtp.gmail.com");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.port", "465");
-        properties.put("mail.debug", "true");
+        //properties.put("mail.debug", "true");
         properties.put("mail.smtp.socketFactory.port", "465");
         properties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
         properties.put("mail.smtp.socketFactory.fallback", "false");
@@ -167,7 +171,7 @@ public class Main {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
             // Set Subject: header field
-            message.setSubject("Новые предложения lardi-trans");
+            message.setSubject(subj);
 
             // Now set the actual message
             message.setText(messageText);
