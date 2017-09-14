@@ -28,8 +28,7 @@ public class MySQLAccess {
             Statement statement = connect.createStatement();
             // Result set get the result of the SQL query
             resultSet = statement
-                    //.executeQuery("select htmlText, id, sent from offer where sent is not null;");
-                    .executeQuery("select htmlText, id, sent from offer;");
+                    .executeQuery("select htmlText, id, sent from offer where sent is null;");
 
             while (resultSet.next()) {
                 result.add(new Offer(resultSet.getString("htmlText"), resultSet.getString("id"), resultSet.getDate("sent")));
@@ -100,4 +99,45 @@ public class MySQLAccess {
         }
     }
 
+    public void markOffersSent(List<Offer> newOffers) throws SQLException {
+
+        if (newOffers.size() ==0){
+            return;
+        }
+
+        Connection connect = null;
+        PreparedStatement preparedStatement = null;
+        try {
+
+            String ids = "(";
+
+            for (int i = 0; i < newOffers.size(); i++){
+
+                Offer o = newOffers.get(i);
+                if (i > 0){
+                    ids +=",";
+                }
+                ids += "\"" + o.getId() + "\"";
+            }
+
+            ids +=")";
+            connect = connect();
+            // Statements allow to issue SQL queries to the database
+            preparedStatement = connect
+                    .prepareStatement("update  larditransparser.offer set sent = NOW() where id in " + ids + ";");
+
+            preparedStatement.executeUpdate();
+
+
+        } catch (SQLException e) {
+            logger.error("Cant write to database.", e);
+            throw e;
+        }
+
+        finally {
+            close(preparedStatement, connect, null);
+        }
+
+
+    }
 }
