@@ -9,7 +9,9 @@ import org.jsoup.select.Elements;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.SQLException;
@@ -19,17 +21,31 @@ import java.util.Properties;
 
 public class Main {
     private final static String URL_TEMPLATE="https://lardi-trans.com/gruz/?countryfrom={0}&countryto={1}&mass2={2}&startSearch=%D0%A1%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C+%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D0%BA%D1%83";
-    private final static long SLEEP_PARSER = 10 * 60 * 1000;
-    private final static long SLEEP_SENDER = 5 * 60 * 1000;
+    private final static long SLEEP_PARSER;
+    private final static long SLEEP_SENDER;
     private final static long SUPPORT_DELAY = 30 * 60 * 1000;
-    private final static String TO_EMAIL = "yhankovich@gmail.com";
-    private final static String SUPPORT_EMAIL = "yhankovich@gmail.com";
     private final static String GMAIL_ACCOUNT = "larditransparser";
     private final static String GMAIL_PASSWORD = "babagala";
     private static long LAST_TIME_SUPPORT_CONTACTED = 0;
-
-
     final static Logger logger = Logger.getLogger(Main.class);
+    private static final String TO_EMAIL;
+    private static final String SUPPORT_EMAIL;
+
+
+    static{
+            InputStream input = Main.class.getClassLoader().getResourceAsStream(System.getenv("props"));
+            Properties prop = new Properties();
+        try {
+            prop.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        TO_EMAIL = prop.getProperty("email.to");
+        SUPPORT_EMAIL = prop.getProperty("email.support");
+        SLEEP_PARSER = Integer.valueOf(prop.getProperty("sleep.parser"));
+        SLEEP_SENDER = Integer.valueOf(prop.getProperty("sleep.sender"));
+    }
+
 
     public static void main(String args[]) throws IOException {
         scheduleParser();
